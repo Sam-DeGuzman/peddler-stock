@@ -2,7 +2,9 @@ class AdminpagesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    if User.any?
     @pendings = User.where(role_id: 2).where(confirmed_at: nil)
+    end
   end
 
   def user
