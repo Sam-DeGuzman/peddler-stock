@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Role.create(id: 1, role_name: "Buyer")
 Role.create(id: 2, role_name: "Broker")
+
+Admin.create(email:"admin@gmail.com", password:"admin123")

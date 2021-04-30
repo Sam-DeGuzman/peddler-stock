@@ -78,16 +78,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    case current_user.role_id
-    when 1
-      buyers_path
-    when 2
-      brokers_path
-    else
-      super(resource)
-    end
-  end
+  # def after_sign_up_path_for(resource)
+  #     super(resource)
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
