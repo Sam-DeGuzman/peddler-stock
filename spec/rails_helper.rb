@@ -9,6 +9,9 @@ require 'shoulda/matchers'
 require 'factory_bot_rails'
 require 'capybara/rails'
 
+require 'devise'
+require_relative 'support/controller_macros'
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 begin
@@ -19,12 +22,17 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
   config.include FactoryBot::Syntax::Methods
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  config.extend ControllerMacros, :type => :controller
+  
   config.before(:suite) do
     DatabaseRewinder.clean_all
   end

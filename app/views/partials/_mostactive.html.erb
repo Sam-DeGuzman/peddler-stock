@@ -1,0 +1,27 @@
+<table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
+			<thead class="text-white">
+            <% @mostactive.each do %>
+				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
+                    <th class="p-3 text-left">Company Name</th>
+                    <th class="p-3 text-left">Symbol</th>
+                    <th class="p-3 text-left">Latest Price</th>
+                    <th class="p-3 text-left">Latest Update</th>
+                    <th class="p-3 text-left">Action</th>
+				    </tr>
+                  
+            <% end %>
+			</thead>
+			<tbody class="flex-1 sm:flex-none">
+           <% @mostactive.each_with_index do |active,index| %>
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].company_name %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].symbol %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= @mostactive[index].latest_price%></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].latest_time %></td>
+                    <td class="border-grey-light border hover:bg-gray-100 p-3">
+                    <%= link_to "Buy Stock", create_brokers_path({user_id: current_user.id, ticker: @mostactive[index].symbol,company:@mostactive[index].company_name, price: @mostactive[index].latest_price}), method: :post,data: { confirm: "Add this stock to your Broker Portfolio ?" },class: "p-2 bg-green-500 text-gray-50 rounded-md" %></td> 
+                  
+                </tr>
+             <% end %>
+			</tbody>
+		</table>

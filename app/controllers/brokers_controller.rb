@@ -1,4 +1,6 @@
 class BrokersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @client = IEX::Api::Client.new(
       publishable_token:  ENV['IEX_P_PK'], # ENV['IEX_P_PK'] for production
@@ -50,7 +52,7 @@ class BrokersController < ApplicationController
   end
 
   def transactions
-    @transactions = Transaction.where(broker_id: current_user.id)
+    @transactions = Transaction.where(broker_id: current_user.id).order('created_at ASC')
   end
 
   def brokers_params

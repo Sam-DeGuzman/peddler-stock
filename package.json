@@ -17,5 +17,9 @@
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "cy:open": "cypress open"
   }
+  
 }

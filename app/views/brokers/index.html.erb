@@ -2,7 +2,7 @@
 
 <div>
   <div class="inline"><%= image_tag("broker.png",class:"object-contain xs:w-auto sm:w-1/4 md:w-1/5  inline",alt:"Transactions Image ") %></div>
-  <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Most Active Stock Market List</h1></div>
+  <div class="inline"><h1 class="inline ml-10 text-xl font-bold">Stock Market List</h1></div>
 </div>
 
 <%#= form_tag search_stock_path, method: :get do %>
@@ -11,41 +11,24 @@
         <%# end %>
 
 	<div class="container flex items-center justify-center justify-self-center mt-5">    
- 
-        <%# @mostactive = @client.stock_market_list(:mostactive) %>
-        <%# @key = @client.key_stats('MSFT') %>
-        <% @mostactive = [] %>
-            <% unless @mostactive.length == 0  %>
-        <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
-			<thead class="text-white">
-            <% @mostactive.each do %>
-				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
-                    <th class="p-3 text-left">Company Name</th>
-                    <th class="p-3 text-left">Symbol</th>
-                    <th class="p-3 text-left">Latest Price</th>
-                    <th class="p-3 text-left">Latest Update</th>
-                    <th class="p-3 text-left">Action</th>
-				    </tr>
-                  
-            <% end %>
-			</thead>
-			<tbody class="flex-1 sm:flex-none">
-           <% @mostactive.each_with_index do |active,index| %>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].company_name %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].symbol %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= @mostactive[index].latest_price%></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= @mostactive[index].latest_time %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3">
-                    <%= link_to "Buy Stock", create_brokers_path({user_id: current_user.id, ticker: @mostactive[index].symbol,company:@mostactive[index].company_name, price: @mostactive[index].latest_price}), method: :post,data: { confirm: "Add this stock to your Broker Portfolio ?" },class: "p-2 bg-green-500 text-gray-50 rounded-md" %></td> 
-                  
-                </tr>
-             <% end %>
-			</tbody>
-		</table>
+        
+        <% @mostactive = @client.stock_market_list(:mostactive) %>
+        <% @iexvolume = @client.stock_market_list(:iexvolume) %>
+    
+        <% @key = @client.key_stats('AAPL') %>
+
+        <% if @mostactive.length == 0 and @iexvolume.length == 0%>
+          <p>There are no stocks list available at the moment...</p>
         <% else %>
-            <p>There are currently no stocks available for purchase.</p>
+          <% if @mostactive.length == 0 %>
+            <%= render 'partials/iexvolume' %>
+            <% else %>
+            <%= render 'partials/mostactive' %>
+          <% end %>
         <% end %>
+
+       
+       
 	</div>
 </div>
 

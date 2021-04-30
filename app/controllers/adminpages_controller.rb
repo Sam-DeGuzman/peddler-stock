@@ -1,4 +1,6 @@
 class AdminpagesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @pendings = User.where(role_id: 2).where(confirmed_at: nil)
   end
@@ -48,7 +50,7 @@ class AdminpagesController < ApplicationController
   def destroy; end
 
   def transactions
-    @transactions = Transaction.all
+    @transactions = Transaction.all.order('created_at ASC')
   end
 
   private

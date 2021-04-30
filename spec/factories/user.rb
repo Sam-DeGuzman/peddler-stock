@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :user do
+    id { 1 }
+
     trait(:buyer) { role_id { 1 } }
     trait(:broker) { role_id { 2 } }
 

@@ -1,4 +1,6 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @forsale = BrokerStock.all
   end
@@ -31,7 +33,6 @@ class BuyersController < ApplicationController
 
   def new
     @stock = BrokerStock.find_by(id: params[:id])
-    @existing = BuyerStock.where(user_id: current_user.id).exists?(ticker: @stock.ticker)
   end
 
   def update; end
@@ -43,7 +44,7 @@ class BuyersController < ApplicationController
   end
 
   def transactions
-    @transactions = Transaction.where(user_id: current_user.id)
+    @transactions = Transaction.where(user_id: current_user.id).order('created_at ASC')
   end
 
   def buyers_params
