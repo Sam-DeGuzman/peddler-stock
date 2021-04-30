@@ -9,8 +9,9 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-  # config.action_mailer.default_url_options = { :host => 'yourhostsite.herokuapp.com' }
-
+  config.action_mailer.default_url_options = { :host => 'https://peddler.herokuapp.com/' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   # Code is not reloaded between requests.
   config.cache_classes = true
 
