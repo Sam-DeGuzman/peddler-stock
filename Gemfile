@@ -17,11 +17,10 @@ gem 'devise'
 gem 'iex-ruby-client'
 gem 'figaro'
 
-
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'selenium-webdriver'
+  gem 'cypress-on-rails'
 end
 
 group :development do
@@ -41,4 +40,5 @@ group :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'capybara'
+  gem 'database_cleaner-active_record'
 end

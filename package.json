@@ -16,10 +16,10 @@
   "version": "0.1.0",
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
+    "cypress": "^7.2.0",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
     "cy:open": "cypress open"
   }
-  
 }

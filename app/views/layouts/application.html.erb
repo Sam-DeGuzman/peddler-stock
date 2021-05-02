@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Peddler - Stock Trading App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +14,7 @@
     <script src="https://kit.fontawesome.com/e27963bb72.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="p-0 m-0">
+  <body class="p-0 m-0 mb-10">
     <% unless signed_in? %>
       <%= render 'partials/navbar' %>
     <% end %>
