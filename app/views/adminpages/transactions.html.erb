@@ -21,9 +21,11 @@
 				    </tr>
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
+
+      <tbody class="flex-1 sm:flex-auto">
             <% @transactions.each do |transaction| %>
-            <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+            
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-4">
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.user_id).firstname.capitalize%> <%= User.find(transaction.user_id).lastname.capitalize %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.broker_id).firstname.capitalize%> <%= User.find(transaction.broker_id).lastname.capitalize %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.ticker %></td>
@@ -32,6 +34,7 @@
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= transaction.total_price%></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.created_at.to_date%></td>
             </tr>  
+
              <% end %>
 			</tbody>
 		</table>

@@ -20,15 +20,16 @@
  
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
-            <% @stocks.each do |stock| %>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.company %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.ticker %></td>
-                    <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.price%></td>
-                </tr>  
 
-                    
+        <tbody class="flex-1 sm:flex-auto">
+            <% @stocks.each do |stock| %>
+            
+              <tr class="flex flex-col flex-no wrap sm:table-row mb-3.5">
+                <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.company %></td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.ticker %></td>
+                <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.price%></td>
+              </tr>  
+
              <% end %>
 			</tbody>
 		</table>

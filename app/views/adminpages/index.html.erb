@@ -20,18 +20,18 @@
                         
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
-              <% @pendings.each do |pending| %>
-            <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+
+      <tbody class="flex-1 sm:flex-auto">
+            <% @pendings.each do |pending| %>
+
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-3.5">
              <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.id %></td>
             <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.email %></td>
             <td class="border-grey-light border hover:bg-gray-100 p-3"><%= pending.created_at.to_date %></td>
             <td class="border-grey-light border hover:bg-gray-100 p-3"><%= link_to 'Confirm Account', admins_confirm_path(pending.id), data: { confirm: "Confirm account for email: '#{pending.email}'?" }, class:"p-2 bg-green-500 text-gray-50 rounded-md "%></td>
             </tr>  
 
-            
-            
-             <% end %>
+            <% end %>
 			</tbody>
 		</table>
         <% else %>

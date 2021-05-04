@@ -11,6 +11,7 @@
         <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
             <% @stocks.each do %>
+
 				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
                         <th class="p-3 text-left">Company Name</th>
                         <th class="p-3 text-left">Symbol</th>
@@ -18,17 +19,21 @@
                         <th class="p-3 text-left">Price</th>
                         <th class="p-3 text-left">Total Price</th>
 				    </tr>
+            
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
+      
+      <tbody class="flex-1 sm:flex-auto">
             <% @stocks.each do |stock| %>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+
+                <tr class="flex flex-col flex-no wrap sm:table-row mb-3.5">
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.company %></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.ticker %></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= stock.quantity %></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.price%></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= stock.total_price%></td>
-                </tr>  
+                </tr>
+
              <% end %>
 			</tbody>
 		</table>

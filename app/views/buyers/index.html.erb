@@ -20,9 +20,12 @@
 				    </tr>
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
+
+      
+      <tbody class="flex-1 sm:flex-auto">
             <% @forsale.each do |sellitem| %>
-                <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+            
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-3.5">
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(sellitem.user_id).firstname%> <%= User.find(sellitem.user_id).lastname%> </td> 
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= sellitem.ticker %></td>
                     <td class="border-grey-light border hover:bg-gray-100 p-3"><%= sellitem.company %></td>

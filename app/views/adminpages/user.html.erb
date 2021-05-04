@@ -10,7 +10,7 @@
         <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
             <% @users.each do %>
-				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
+				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3">               
                         <th class="p-3 text-left">ID</th>
                         <th class="p-3 text-left">Role</th>
                         <th class="p-3 text-left">Email</th>
@@ -19,9 +19,9 @@
 				    </tr>   
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
+			<tbody class="flex-1 sm:flex-auto">
               <% @users.each do |user| %>
-            <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-3.5">
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= user.id %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= Role.find(user.role_id).role_name %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= user.email %></td>

@@ -11,6 +11,7 @@
         <table class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5">
 			<thead class="text-white">
             <% @transactions.each do %>
+
 				    <tr class="bg-blue-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-3 sm:mb-0">               
                     <th class="p-3 text-left">Buyer Name</th>
                     <th class="p-3 text-left">Broker Name</th>
@@ -20,11 +21,14 @@
                     <th class="p-3 text-left">Total Price</th>
                     <th class="p-3 text-left">Transaction Date</th>
 				    </tr>
+            
             <% end %>
 			</thead>
-			<tbody class="flex-1 sm:flex-none">
+
+      <tbody class="flex-1 sm:flex-auto">
             <% @transactions.each do |transaction| %>
-            <tr class="flex flex-col flex-no wrap sm:table-row mb-3 sm:mb-0">
+
+            <tr class="flex flex-col flex-no wrap sm:table-row mb-4">
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.user_id).firstname.capitalize%> <%= User.find(transaction.user_id).lastname.capitalize %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= User.find(transaction.broker_id).firstname.capitalize%> <%= User.find(transaction.broker_id).lastname.capitalize %></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.ticker %></td>
@@ -33,6 +37,7 @@
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= "$" %><%= transaction.total_price%></td>
                 <td class="border-grey-light border hover:bg-gray-100 p-3"><%= transaction.created_at.to_date%></td>
             </tr>  
+
              <% end %>
 			</tbody>
 		</table>

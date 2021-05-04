@@ -1,10 +1,10 @@
 <%= form_with url: create_buyers_path, html: {class: "form-floating mb-3"} do |f|%>
 
 
-<div class="ml-10 mt-10 container w-full flex justify-center" style="margin-top:70px;">
+<div class="ml-10 mt-10 container w-full flex justify-center " style="margin-top:70px;">
 
-    <div class="w-1/2 ml-10 p-3 text-center rounded-md shadow-lg ">
-        <h1 class="mb-5 text-xl font-medium" >Buy stock</h1>
+    <div class="w-1/2 ml-10 text-center shadow-lg ">
+        <h1 class="w-full mb-5 text-xl font-medium bg-blue-400 text-white py-3 rounded-t-lg " >Buy stock</h1>
 
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :broker_id, :value => @stock.user_id %>
@@ -12,28 +12,29 @@
             <h1 class="mt-2 font-medium">Stock Symbol</h1>
             <p><%= @stock.ticker %></p>
             <%= f.hidden_field :ticker, :value => @stock.ticker %>
-        </p>   
-
+        </p> 
+       
+        
         <p>
             <h1 class="mt-2 font-medium">Company</h1>
             <p><%= @stock.company %></p>
             <%= f.hidden_field :company, :value => @stock.company%>
         </p>
-        
+         
         <p>
             <h1 class="mt-2 font-medium">Price</h1>
             <p>$<%= @stock.price %></p>
             <%= f.hidden_field :price, :value => @stock.price%>
         </p>
-
+          
         <p>
             <h1 class="mt-2 font-medium">Quantity</h1>
-            <%= f.number_field :quantity, min:1, value:1, :class => 'p-1 mb-4 w-20 border-2'%>
+            <%= f.number_field :quantity, min:1, value:1, :class => 'p-1 mb-4 w-20 border-2 rounded-md text-center'%>
         </p>
-
+        
         <p>
 
-            <%= f.submit "Add",:class => 'cursor-pointer p-2 rounded-md bg-green-500 text-gray-50',data: {disable_with: "Buying..."}%>
+            <%= f.submit "Buy",:class => 'cursor-pointer p-2 rounded-md bg-green-500 text-gray-50 mb-5',data: {disable_with: "Buying..."}%>
  
         </p>
 
