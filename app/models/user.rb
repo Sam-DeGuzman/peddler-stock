@@ -14,5 +14,4 @@ class User < ApplicationRecord
   def self.find_db(user_id)
     find_by(id: user_id)
   end
-  
 end
