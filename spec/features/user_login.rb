@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Login as a Broker User', type: :feature, :js => true do
+RSpec.describe 'Login as a Broker User', type: :feature, js: true do
   let(:broker) { create :user, :broker }
   let(:buyer) { create :user, :buyer }
 
@@ -12,30 +12,9 @@ RSpec.describe 'Login as a Broker User', type: :feature, :js => true do
       fill_in 'user_password', with: broker.password
 
       click_on('Log in')
-      
     end
     expect(page).to have_current_path brokers_path, ignore_query: true
-
   end
-
-  it 'doesnt log the broker user in' do
-    visit new_user_session_path
-
-    within '#new_user' do
-      fill_in 'user_email', with: "broker.email@gmail.com"
-      fill_in 'user_password', with: "123456"
-
-      # sleep 10.minutes
-      click_on('Log in')
-      
-    end
-    expect(page).to have_current_path new_user_session_path, ignore_query: true
-
-    expect(page).to have_content "Invalid Email or password."
-    
-    
-  end
-
 
   it 'logs the buyer user in' do
     visit new_user_session_path
@@ -46,28 +25,21 @@ RSpec.describe 'Login as a Broker User', type: :feature, :js => true do
 
       # sleep 10.minutes
       click_on('Log in')
-      
     end
     expect(page).to have_current_path buyers_path, ignore_query: true
-
   end
 
-  it 'doesnt log the buyer user in' do
+  it 'doesnt log the user in' do
     visit new_user_session_path
 
     within '#new_user' do
-      fill_in 'user_email', with: "buyer.email@gmail.com"
-      fill_in 'user_password', with: "123456"
+      fill_in 'user_email', with: 'buyer.email@gmail.com'
+      fill_in 'user_password', with: '123456'
 
       # sleep 10.minutes
       click_on('Log in')
-      
     end
-    expect(page).to have_current_path new_user_session_path, ignore_query: true
 
-    expect(page).to have_content "Invalid Email or password."
-    
-    
+    expect(page).to have_content 'Invalid Email or password.'
   end
-  
 end
