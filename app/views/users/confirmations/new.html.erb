@@ -1,10 +1,11 @@
+<%= render "users/shared/error_messages", resource: resource %>
 <div class="flex justify-center h-auto items-center mt-10 p-10">
     <div class='flex max-w-sm w-full h-150 justify-center shadow-xl bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
 
 <h2 class="text-lg font-bold">Resend confirmation instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+
 
   <div class="field">
     <%= f.label :email %><br />
@@ -15,8 +16,6 @@
     <%= f.submit "Resend confirmation instructions", class:"p-2 bg-green-400 text-gray-50 rounded-md" %>
   </div>
 <% end %>
-
-
 
 
 <section class="text-center mt-2">
