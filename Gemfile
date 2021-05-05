@@ -35,6 +35,7 @@ group :test do
   gem 'database_rewinder'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'vcr'
   gem 'webmock'
   gem 'rubocop-rails', require: false

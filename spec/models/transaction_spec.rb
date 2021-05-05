@@ -8,4 +8,7 @@ RSpec.describe Transaction, type: :model do
   it { expect(described_class.new).to validate_presence_of :ticker }
   it { expect(described_class.new).to validate_presence_of :quantity }
   it { expect(described_class.new).to validate_presence_of :price }
+
+  # Callback
+  it { expect(described_class.new).to callback(:compute_total_price).before(:save) }
 end

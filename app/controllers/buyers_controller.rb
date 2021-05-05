@@ -5,10 +5,16 @@ class BuyersController < ApplicationController
 
   def create
     if BuyerStock.where(user_id: current_user.id).exists?(ticker: params[:ticker])
-      record = BuyerStock.find_db(current_user.id, params[:ticker])
-      existqty = record.quantity + params[:quantity].to_i
 
-      record.update(quantity: existqty, price: params[:price])
+      existing = BuyerStock.where(user_id: current_user.id).where(ticker: params[:ticker])
+
+      quantity_arr = existing.pluck(:quantity)
+
+      quantity = quantity_arr[0]
+
+      existqty = quantity + params[:quantity].to_i
+      
+      existing.update(quantity: existqty, price: params[:price])
 
       @record = Transaction.create(transactions_params)
 

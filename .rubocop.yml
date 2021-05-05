@@ -30,6 +30,8 @@ Metrics/BlockLength:
   Exclude:
     - "config/**/*"
     - "spec/**/*"
+RSpec/FilePath:
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
