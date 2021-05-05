@@ -13,16 +13,5 @@ RSpec.describe BuyerStock, type: :model do
   it { expect(described_class.new).to callback(:compute_total_price_create).before(:save) }
   # it { is_expected.to callback(:compute_total_price_create).before(:save) }
 
-  # Method
-  describe 'find_db' do
-    it 'created stock should be found existing' do
-      user = FactoryBot.create(:user, :buyer)
-
-      stockattr = attributes_for(:buyer_stock)
-
-      stock = described_class.create! stockattr
-
-      expect(described_class.find_db(user.id, stock.ticker)).not_to be_nil
-    end
-  end
+ 
 end
