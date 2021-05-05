@@ -13,7 +13,7 @@ class BuyersController < ApplicationController
       quantity = quantity_arr[0]
 
       existqty = quantity + params[:quantity].to_i
-      
+
       existing.update(quantity: existqty, price: params[:price])
 
       @record = Transaction.create(transactions_params)

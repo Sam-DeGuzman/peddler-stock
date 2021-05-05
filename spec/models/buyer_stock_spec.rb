@@ -12,6 +12,4 @@ RSpec.describe BuyerStock, type: :model do
   # Callback
   it { expect(described_class.new).to callback(:compute_total_price_create).before(:save) }
   # it { is_expected.to callback(:compute_total_price_create).before(:save) }
-
- 
 end
